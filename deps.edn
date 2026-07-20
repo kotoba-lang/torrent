@@ -1,0 +1,10 @@
+{:paths ["src"]
+ :aliases
+ {:test
+  {:extra-paths ["test" "../bencode/src" "../hash/src"]
+   :extra-deps
+   {io.github.kotoba-lang/kotoba {:local/root "../kotoba"}
+    io.github.kotoba-lang/kotoba-core-contracts
+    {:local/root "../kotoba-core-contracts"}
+    io.github.kotoba-lang/kotoba-lang {:local/root "../kotoba-lang"}}
+   :main-opts ["-m" "kotoba.torrent-v1-test"]}}}
