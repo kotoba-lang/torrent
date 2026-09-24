@@ -1,6 +1,6 @@
 (ns kotoba.torrent-v1-test
   (:require [kotoba.lang.edn :as edn]
-            [clojure.test :refer [deftest is testing run-tests]]
+            [kotoba.test :refer [deftest is testing run-tests]]
             [kotoba.runtime :as runtime]
             [kotoba.wasm-exec :as wasm-exec])
   (:import (com.dylibso.chicory.wasm Parser)))
