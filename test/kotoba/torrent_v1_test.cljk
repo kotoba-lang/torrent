@@ -1,5 +1,5 @@
 (ns kotoba.torrent-v1-test
-  (:require [kotoba.lang.edn :as edn]
+  (:require [kotoba.bytes :as kbytes] [kotoba.lang.edn :as edn]
             [kotoba.test :refer [deftest is testing run-tests]]
             [kotoba.runtime :as runtime]
             [kotoba.wasm-exec :as wasm-exec])
@@ -46,7 +46,7 @@
         info-value "d6:lengthi5e4:name1:xe"
         info-start (.indexOf metainfo info-value)
         info-end (+ info-start (count info-value))]
-    (.write (.memory instance) ptr (.getBytes metainfo "UTF-8") 0 (count metainfo))
+    (.write (.memory instance) ptr (kbytes/utf8-bytes metainfo) 0 (count metainfo))
     (is (= 1 (invoke instance "bt-metainfo-valid?" [ptr (count metainfo)])))
     (is (= info-start (invoke instance "bt-info-start" [ptr (count metainfo)])))
     (is (= info-end (invoke instance "bt-info-end" [ptr (count metainfo)])))
